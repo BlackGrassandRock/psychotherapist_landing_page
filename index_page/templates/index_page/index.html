@@ -1,0 +1,544 @@
+{% extends 'index_page/base.html'%}
+{% block content %}
+{% load static %}
+
+
+<!-- Cover  / Допомога поруч -->
+
+{% for i in index_content %}
+{% if i.section_title == "CV" %}
+<section class="header18 cid-tZ7anxtRNj mbr-fullscreen" style="background-image: url({{MEDIA_URL}}{{i.image}});">
+  <div class="mbr-overlay" style="opacity: 0.3; background-color: rgb(0, 0, 0);"></div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="content-wrap col-12 col-md-10">
+        <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-4 display-1">
+          <strong>{{i.title}}</strong>
+        </h1>
+          {% for dop_field in i.dop_fields %}
+            <p class="mbr-fonts-style mbr-text mbr-white mb-4 display-7">{{ dop_field.description|safe|linebreaksbr }}</p>
+          {% endfor %}
+        <div class="mbr-section-btn">
+          <a class="btn btn-white-outline display-7" href="#learn_more">Дізнатися більше</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+{% endif %}
+{% endfor %}
+
+
+<!-- Block Performance / Name, Surname and descriptions-->
+
+{% for i in index_content %}
+{% if i.section_title == "PR" %}
+<section id="about_me" class="people04 cid-tZ7anxw07m" id="about-me-12-tZ7anxthDR">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-8 order-lg-first img-wrapper circle-image rounded mx-auto">
+                    <img src="{{MEDIA_URL}}{{i.image}}" data-slide-to="0" data-bs-slide-to="0">
+            </div>
+            <div class="col-md-12 col-lg-7">
+                <h3 class="mbr-section-title mbr-fonts-style mb-4 mt-0 display-2 ">
+                <strong>
+                    {{i.title}}
+                </strong>
+                </h3>
+                 <p class="mbr-text mbr-fonts-style display-7">
+                {% for dop_field in i.dop_fields %}
+                {{ dop_field.description|safe|linebreaksbr }}
+                {% endfor %}
+                 </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+
+<!-- Block Statistics / Number of clients, length of service, etc.  -->
+
+<section class="features10 cid-tZ7anxuLCB" id="metrics-2-tZ7anxuLCB">
+  <div class="container">
+    <div class="row justify-content-center">
+    {% for i in index_content %}
+    {% if i.section_title == "ST" %}
+    {% for dop_field in i.dop_fields %}
+      <div class="item features-without-image col-12 col-md-6 col-lg-4">
+        <div class="item-wrapper">
+          <div class="card-box align-left">
+            <h5 class="card-title mbr-fonts-style display-1">
+              <strong>{{dop_field.subtitle}}</strong>
+            </h5>
+            <p class="card-text mbr-fonts-style mb-3 display-7">
+                {{dop_field.description|safe|linebreaksbr }}
+            </p>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- Block Working Approach / Мій підхід до роботи  -->
+
+{% for i in index_content %}
+{% if i.section_title == "WA" %}
+<section class="article07 cid-tZ7anxug1w mbr-parallax-background" id="generic-text-16-tZ7anxug1w">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="card col-md-12 col-lg-10">
+        <div class="card-wrapper">
+          <h3 class="card-title mbr-fonts-style mbr-white mt-3 mb-4 display-2">
+            <strong>{{i.title}}</strong>
+          </h3>
+          <div class="row card-box align-left">
+            <div class="item features-without-image col-12">
+              <div class="item-wrapper">
+                <p class="mbr-text mbr-fonts-style display-7">
+                    {% for dop_field in i.dop_fields %}
+                    {{ dop_field.description|safe|linebreaksbr }}
+                    {% endfor %}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+
+<!-- Block List Of Services / Psychotherapy, Coaching, Online consultations, etc.  -->
+
+<section class="features023 cid-tZ7anxvsAo" id="features-23-tZ7anxvsAo">
+  <div class="container">
+    <div class="row content-row">
+    {% for i in index_content %}
+    {% if i.section_title == "LS" %}
+        {% for dop_field in i.dop_fields %}
+        <div class="item features-without-image col-12 col-md-6 col-lg-4 item-mb">
+        <div class="item-wrapper">
+          <div class="title mb-3">
+            <span class="num mbr-fonts-style display-1"><strong>{{i.title}}</strong></span>
+          </div>
+          <h4 class="card-title mbr-fonts-style display-5">
+            <strong>{{dop_field.subtitle}}</strong>
+          </h4>
+          <p class="mbr-text card-text mbr-fonts-style mb-0 display-7">
+              {{ dop_field.description|safe|linebreaksbr }}
+          </p>
+        </div>
+      </div>
+    {% endfor %}
+    {% endif %}
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- Block Description of the Client / Якщо Ви:  -->
+
+{% for i in index_content %}
+{% if i.section_title == "DC" %}
+{% for dop_field in i.dop_fields %}
+<section class="timeline04 cid-tZ7anxxcns" id="learn_more">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="card col-md-12 col-lg-10">
+          <div class="card-wrapper">
+          <div class="row justify-content-center">
+            <div class="col-12 mb-5 content-head">
+              <h3 class="card-title mbr-fonts-style mbr-white mt-3 display-2 animate__animated animate__delay-1s animate__fadeIn">
+                <strong>{{i.title}}</strong>
+              </h3>
+            </div>
+          </div>
+          <div class="card-box">
+            <div class="item-content">
+              <p class="mbr-text mbr-fonts-style display-7 animate__animated animate__delay-1s animate__fadeIn">
+                  {{ dop_field.description|safe|linebreaksbr }}
+              </p>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endfor %}
+{% endif %}
+{% endfor %}
+
+
+<!-- Sign up for a consultation/ Ви готові почати?  -->
+
+<section class="header19 cid-tZ7anxv9bh" id="call-to-action-7-tZ7anxv9bh">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <h1 class="mbr-section-title mbr-fonts-style mb-4 display-1">
+                    <strong>Ви готові почати?</strong>
+                </h1>
+                <div class="mbr-section-btn">
+                    <a class="btn btn-primary display-7"  href="https://booking.setmore.com/scheduleappointment/022daf39-764e-4cbd-9a33-546393eb1116">Запишіться на консультацію!</a>
+                   </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Comments / Відгуки  -->
+
+<section id="reviews" class="people04 cid-tZ7anxw07m" id="testimonials-4-tZ7anxw07m">
+	<div class="container">
+		<div class="row mb-5 justify-content-center">
+			<div class="col-12 mb-0 content-head">
+				<h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+					<strong>Відгуки</strong>
+				</h3>
+			</div>
+		</div>
+		<div class="row mbr-masonry" data-masonry="{&quot;percentPosition&quot;: true }">
+            {% for i in comments %}
+            <div class="item features-without-image col-12 col-md-6 col-lg-4">
+				<div class="item-wrapper">
+					<div class="card-box align-left">
+						<p class="card-text mbr-fonts-style display-7">
+                            {{i.description}}
+                        </p>
+						<div class="img-wrapper mt-4 mb-3">
+							<img src="{{MEDIA_URL}}{{i.image}}" data-slide-to="1" data-bs-slide-to="1">
+						</div>
+						<h5 class="card-title mbr-fonts-style display-7">
+							<strong>{{i.title}}</strong>
+						</h5>
+					</div>
+				</div>
+			</div>
+            {% endfor %}
+        </div>
+	</div>
+</section>
+
+
+<!-- Events / Найближчі події  -->
+
+<section class="features03 cid-tZ7anxws0H" id="events-1-tZ7anxws0H">
+	<div class="container-fluid">
+		<div class="row justify-content-center mb-5">
+			<div class="col-12 content-head">
+				<div class="mbr-section-head">
+					<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+						<strong>Найближчі події</strong>
+					</h4>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+            {% for i in events %}
+                <div class="item features-image col-12 col-md-6 col-lg-3 active animate__animated animate__delay-1s animate__fadeIn">
+				<div class="item-wrapper">
+					<div class="item-img mb-3">
+						<img src="{{MEDIA_URL}}{{i.image}}">
+					</div>
+					<div class="item-content align-left">
+						<h6 class="item-subtitle mbr-fonts-style mb-3 display-5">
+							<strong><a class="text-black fw-bold" href="#">{{i.title}}</a></strong>
+						</h6>
+						<p class="mbr-text mbr-fonts-style mb-3 display-7">{{i.date_of_event|date:"d.m.Y G:i"}}</p>
+						<p class="mbr-text mbr-fonts-style mb-3 display-7">{{i.description}}</p>
+						<div class="mbr-section-btn item-footer ">
+                            <a class="btn item-btn btn-primary display-7" href="{{i.link}}">Взяти участь</a>
+                        </div>
+					</div>
+				</div>
+			</div>
+            {% endfor %}
+		</div>
+	</div>
+</section>
+
+
+<!-- Services / Послуги  -->
+
+<section id="services" class="features4 cid-tZ7anxwAUf" id="service-list-2-tZ7anxwAUf">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 content-head">
+        <div class="mbr-section-head mb-5">
+          <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+            <strong>Послуги</strong>
+          </h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+    {% for i in services %}
+      <div class="item features-image col-12 col-md-6 col-lg-4">
+        <div class="item-wrapper">
+          <div class="item-img">
+            <img src="{{MEDIA_URL}}{{i.image}}">
+          </div>
+          <div class="item-content">
+            <h5 class="item-title mbr-fonts-style display-5">
+              <strong>{{i.title}}</strong>
+            </h5>
+            <p class="mbr-text mbr-fonts-style display-7">
+              {{i.description}}
+            </p>
+            <div class="mbr-section-btn item-footer">
+                <a class="btn item-btn btn-primary display-7"  href="{{i.link}}">Купити</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+</section>
+
+
+<!-- Image "Cafe with laptop"  -->
+
+<section class="image02 cid-tZ7anxwqp6 mbr-fullscreen mbr-parallax-background" id="image-13-tZ7anxwqp6">
+    <div class="container">
+        <div class="row"></div>
+    </div>
+</section>
+
+
+<!-- Subscription Form  -->
+
+<section class="header2 cid-tZ7anxwTUr" id="subscription-form-1-tZ7anxwTUr">
+  <div class="container">
+    <div class="row content-wrapper justify-content-center">
+      <div class="col-lg-8 mbr-form">
+          <h1 class="mbr-section-title mbr-fonts-style mb-5 display-1">
+            <strong>Підпишіться на новини</strong>
+          </h1>
+        <div class="text-wrapper align-left" data-form-type="formoid">
+          <form action="" method="POST" class="mbr-form form-with-styler" data-form-title="Form Name"><input type="hidden" name="email" data-form-email="true" value="">
+              {% csrf_token %}
+              {% if success_subscription %}
+                <div class="col-12 alert alert-success" id="success">Вітаю, підписка пройшла успішно!</div>
+              {% endif %}
+              {% if subscriptionform.non_field_errors %}
+                <div class="col-12 alert danger"> {{subscriptionform.non_field_errors}}</div>
+              {% endif %}
+          <div class="row">
+              <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+              <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                Oops...! some problem!
+              </div>
+            </div>
+            <div class="dragArea row">
+              <div data-for="email" class="col-lg-6 col-md-6 col-sm-12 form-group">
+                  {{ subscriptionform.mail }}
+              </div>
+              <div class="col-auto mbr-section-btn"><button type="submit" class="w-100 btn btn-primary display-7">Підписатися</button></div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Block Questions / Мене часто питають  -->
+
+{% for i in index_content %}
+{% if i.section_title == "QS" %}
+<section class="list05 cid-tZ7anxxIE0" id="faq-3-tZ7anxxIE0">
+    <div class="container">
+        <div class="col-12 mb-5 content-head">
+            <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                <strong>
+                {{i.title}}
+                </strong>
+            </h3>   
+        </div>
+        <div class="row justify-content-center">
+            {% for dop_field in i.dop_fields %}
+            <div class="col-12 col-lg-8">
+                <div class="item features-without-image col-12 active">
+                    <div class="item-wrapper">
+                        <h5 class="mbr-card-title mbr-fonts-style mt-0 mb-3 display-5">
+                            <strong>{{dop_field.subtitle}}</strong></h5>
+                        <p class="mbr-text mbr-fonts-style mt-0 mb-3 display-7">
+                        {{dop_field.description|safe}}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+
+<!-- Image Carousel  -->
+
+<section class="gallery4 cid-tZ7anxvFTE" id="gallery-12-tZ7anxvFTE">
+  <div class="container-fluid gallery-wrapper">
+    <div class="grid-container">
+      <div class="grid-container-1" style="transform: translate3d(-200px, 0px, 0px);">
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1576014131795-d440191a8e8b.jpeg' %}">
+        </div>
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1478476868527-002ae3f3e159.jpeg' %}">
+        </div>
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1539541417736-3d44c90da315.jpeg' %}">
+        </div>
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1582213782179-e0d53f98f2ca.jpeg' %}">
+        </div>
+      </div>
+      <div class="grid-container-2" style="transform: translate3d(-70px, 0px, 0px);">
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1527137342181-19aab11a8ee8.jpeg' %}">
+        </div>
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1533090161767-e6ffed986c88.jpeg' %}">
+        </div>
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1517669375942-946a1f02d705.jpeg' %}">
+        </div>
+        <div class="grid-item">
+          <img src="{% static 'assets/images/photo-1564121211835-e88c852648ab.jpeg' %}">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- Social network  -->
+
+<section class="form5 cid-tZ7anxyInS" id="contact-form-2-tZ7anxyInS">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 content-head">
+                <div class="mbr-section-head mb-5">
+                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                        <strong>Зв'язатися з нами</strong>
+                    </h3>
+                  {% if success_post %}
+                    <div class="col-12 alert alert-success" id="success">Вітаю, підписка пройшла успішно!</div>
+                  {% endif %}
+                  {% if feedbackform.non_field_errors %}
+                    <div class="col-12 alert danger"> {{feedbackform.non_field_errors}}</div>
+                  {% endif %}
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <form action="" method="POST" id="ContactForm" class="mbr-form form-with-styler" data-form-title="Form Name">
+                    {% csrf_token %}
+                    <input type="hidden" name="email" data-form-email="true" value="">
+                    <div class="row">
+                        <div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+                        <div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12">
+                            Oops...! some problem!
+                        </div>
+                    </div>
+                    <div class="dragArea row">
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="name">
+                            {{ feedbackform.name }}
+                        </div>
+                        <div class="col-md col-sm-12 form-group mb-3" data-for="email">
+                            {{ feedbackform.sender }}
+                        </div>
+                        <div class="col-12 form-group mb-3" data-for="textarea">
+                            {{ feedbackform.message }}
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 align-center mbr-section-btn"><button type="submit" class="btn btn-primary display-7">Відправити</button></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- Feedback Form / Зв'язатися з нами  -->
+
+<section class="social4 cid-tZ7anxxbj2" id="follow-us-1-tZ7anxxbj2">
+    <div class="container">
+        <div class="media-container-row">
+            <div class="col-12">
+                <h3 class="mbr-section-title align-center mb-5 mbr-fonts-style display-2">
+                    <strong>Підписуйтесь на цю сторінку</strong>
+                </h3>
+                <div class="social-list align-center">
+                    <a class="iconfont-wrapper bg-facebook m-2 " target="_blank" href="#">
+                        <span class="socicon-facebook socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper bg-twitter m-2" href="#" target="_blank">
+                        <span class="socicon-twitter socicon"></span>
+                    </a>
+                    <a class="iconfont-wrapper bg-instagram m-2" href="#" target="_blank">
+                        <span class="socicon-instagram socicon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+{% for i in index_content %}
+{% if i.section_title == "CN" %}
+<section class="contacts01 cid-tZ7anxyIyB" id="contacts">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 content-head">
+                <div class="mbr-section-head mb-5">
+                    <h3 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                        <strong>{{i.title}}</strong>
+                    </h3>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            {% for dop_field in i.dop_fields %}
+            <div class="item features-without-image col-12 col-md-6 active">
+                <div class="item-wrapper">
+                    <div class="text-wrapper">
+                        <h6 class="card-title mbr-fonts-style mb-3 display-5">
+                            <strong>{{dop_field.subtitle}}</strong>
+                        </h6>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            <a href="tel:+48 73 111 505 7" class="text-black">{{dop_field.description}}</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+
+{% endblock  %}
