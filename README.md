@@ -1,2 +1,0 @@
-# psychotherapist_landing_page
-Psychotherapist landing page
